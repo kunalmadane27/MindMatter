@@ -2,5 +2,5 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path("", createAndGetAllBlogs),
-    path("/<int:id>", getUpdateDeleteBlog)]
+    path("", CreateAndGetAllBlogs.as_view()),
+    path("/<int:pk>", GetUpdateDeleteBlogs.as_view())]
