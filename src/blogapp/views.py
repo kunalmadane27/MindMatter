@@ -7,12 +7,16 @@ from .serializers import BlogSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView 
+from rest_framework.filters import OrderingFilter
 
 
 
 class CreateAndGetAllBlogs(ListCreateAPIView):
     queryset=Blog.objects.all()
     serializer_class=BlogSerializer
+    filter_backends = [OrderingFilter]
+    Ordering_fields = ['title', 'id',"createrd_at","upadate+at"] #fields to alloiw sortinng
+    Ordering = ['id'] #Default ordering 
 
 class GetUpdateDeleteBlogs(RetrieveUpdateDestroyAPIView):
     queryset=Blog.objects.all()
